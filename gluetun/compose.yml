@@ -15,6 +15,7 @@ services:
       - 9696:9696 # prowlarr
     volumes:
       - /home/braden/gluetun:/gluetun
+    env_file: .env
     environment:
       - PUID=1000
       - PGID=100
