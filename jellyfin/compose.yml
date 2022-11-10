@@ -1,0 +1,18 @@
+services:
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=100
+      - UMASK=002
+      - TZ=Australia/Adelaide
+    # ports:
+    #   - 8096:8096
+    #   - 7359:7359/udp
+    #   - 1900:1900/udp
+    volumes:
+      - /home/braden/jellyfin:/config
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/library:/data
+    network_mode: host

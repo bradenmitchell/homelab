@@ -1,0 +1,15 @@
+services:
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=100
+      - UMASK=002
+      - TZ=Australia/Adelaide
+    volumes:
+      - /home/braden/radarr:/config
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media:/data
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: container:gluetun

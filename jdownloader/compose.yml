@@ -1,0 +1,19 @@
+services:
+  jdownloader:
+    image: jaymoulin/jdownloader
+    container_name: jdownloader
+    restart: always
+    user: 1000:100
+    ports:
+      - 3129:3129
+    volumes:
+      - /home/braden/jdownloader/config:/opt/JDownloader/app/cfg
+      - /home/braden/jdownloader/logs:/opt/JDownloader/app/logs
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/opt/JDownloader/Downloads
+      - /etc/localtime:/etc/localtime:ro
+    env_file: stack.env
+    environment:
+      - PUID=1000
+      - PGID=100
+      - UMASK=0002
+    network_mode: bridge

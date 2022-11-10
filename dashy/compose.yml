@@ -1,0 +1,21 @@
+services:
+  dashy:
+    image: lissy93/dashy:latest
+    container_name: dashy
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PUID=1000
+      - PGID=100
+      - UMASK=002
+    ports:
+      - 80:80
+    volumes:
+      - /home/braden/dashy/conf.yml:/app/public/conf.yml
+    network_mode: bridge
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 1m

@@ -1,0 +1,15 @@
+services:
+  qbittorrent:
+    image: hotio/qbittorrent:latest
+    container_name: qbittorrent-hotio
+    restart: always
+    environment:
+      - WEBUI_PORTS=9091
+      - PUID=1000
+      - PGID=100
+      - UMASK=002
+      - TZ=Australia/Adelaide
+    volumes:
+      - /home/braden/qbittorrent:/config
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/torrents:/torrents
+    network_mode: container:gluetun
