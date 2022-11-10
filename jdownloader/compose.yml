@@ -11,7 +11,7 @@ services:
       - /home/braden/jdownloader/logs:/opt/JDownloader/app/logs
       - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/opt/JDownloader/Downloads
       - /etc/localtime:/etc/localtime:ro
-    env_file: stack.env
+    env_file: .env
     environment:
       - PUID=1000
       - PGID=100
