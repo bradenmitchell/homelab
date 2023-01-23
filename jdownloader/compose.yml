@@ -4,8 +4,6 @@ services:
     container_name: jdownloader
     restart: always
     user: 1000:100
-    ports:
-      - 3129:3129
     volumes:
       - /home/braden/jdownloader/config:/opt/JDownloader/app/cfg
       - /home/braden/jdownloader/logs:/opt/JDownloader/app/logs
@@ -16,4 +14,4 @@ services:
       - PUID=1000
       - PGID=100
       - UMASK=0002
-    network_mode: bridge
+    network_mode: container:gluetun
