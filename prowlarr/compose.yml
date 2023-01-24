@@ -1,6 +1,6 @@
 services:
   prowlarr:
-    image: linuxserver/prowlarr:develop
+    image: linuxserver/prowlarr:latest
     container_name: prowlarr
     restart: always
     environment:
