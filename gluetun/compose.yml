@@ -14,7 +14,8 @@ services:
       - 7878:7878 # radarr
       - 8989:8989 # sonarr
       - 9696:9696 # prowlarr
-      - 5800:5800 # jdownloader GUI
+      - 5800:5800 # jdownloader webui
+      - 5900:5900 # jdownloader vnc
       - 3129:3129 # jdownloader
     volumes:
       - /home/braden/gluetun:/gluetun

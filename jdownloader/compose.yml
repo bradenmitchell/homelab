@@ -4,9 +4,8 @@ services:
     image: jlesage/jdownloader-2
     container_name: jdownloader
     restart: always
-    user: 1000:100
     volumes:
-      - /home/braden/jdownloader/config:/config:rw
+      - /home/braden/jdownloader:/config:rw
       - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/output:rw
       - /etc/localtime:/etc/localtime:ro
     environment:
