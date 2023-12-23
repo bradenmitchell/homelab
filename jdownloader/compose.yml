@@ -1,17 +1,16 @@
+version: '3'
 services:
   jdownloader:
-    image: jaymoulin/jdownloader
+    image: jlesage/jdownloader-2
     container_name: jdownloader
     restart: always
     user: 1000:100
     volumes:
-      - /home/braden/jdownloader/config:/opt/JDownloader/app/cfg
-      - /home/braden/jdownloader/logs:/opt/JDownloader/app/logs
-      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/opt/JDownloader/Downloads
+      - /home/braden/jdownloader/config:/config:rw
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/output:rw
       - /etc/localtime:/etc/localtime:ro
-    env_file: .env
     environment:
-      - PUID=1000
-      - PGID=100
+      - USER_ID=1000
+      - GROUP_ID=100
       - UMASK=0002
     network_mode: container:gluetun
