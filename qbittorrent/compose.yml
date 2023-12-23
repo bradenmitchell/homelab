@@ -4,7 +4,7 @@ services:
     container_name: qbittorrent
     restart: always
     environment:
-      - WEBUI_PORT=9091
+      - WEBUI_PORT=9090
       - PUID=1000
       - PGID=100
       - UMASK=002
