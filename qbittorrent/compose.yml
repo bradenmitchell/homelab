@@ -1,8 +1,8 @@
+---
 services:
   qbittorrent:
     image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
-    restart: always
     environment:
       - WEBUI_PORT=9090
       - PUID=1000
@@ -10,6 +10,7 @@ services:
       - UMASK=002
       - TZ=Australia/Adelaide
     volumes:
-      - /home/braden/qbittorrent:/config
-      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/torrents:/torrents
+      - ~/qbittorrent:/config:rw
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/torrents:/torrents:rw
+    restart: unless-stopped
     network_mode: container:gluetun

@@ -1,29 +1,29 @@
+---
 services:
   gluetun:
     image: qmcgaw/gluetun:latest
     container_name: gluetun
-    restart: always
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
+    environment:
+      - PUID=1000
+      - PGID=100
+      - UMASK=002
+      - TZ=Australia/Adelaide
+    env_file: .env
+    volumes:
+      - ~/gluetun:/gluetun:rw
     ports:
       - 9090:9090 # qbittorrent
       - 6767:6767 # bazarr
       - 7878:7878 # radarr
       - 8989:8989 # sonarr
       - 9696:9696 # prowlarr
+      - 8191:8191 # flaresolverr
       - 5800:5800 # jdownloader webui
-      - 5900:5900 # jdownloader vnc
-      - 3129:3129 # jdownloader
-    volumes:
-      - /home/braden/gluetun:/gluetun
-    env_file: .env
-    environment:
-      - PUID=1000
-      - PGID=100
-      - UMASK=002
-      - TZ=Australia/Adelaide
+    restart: always
 
 networks:
   default:

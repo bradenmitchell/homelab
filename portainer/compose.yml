@@ -1,18 +1,19 @@
+---
 services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: portainer
-    restart: always
     environment:
       - PUID=1000
       - PGID=100
       - UMASK=002
       - TZ=Australia/Adelaide
+    volumes:
+      - ~/portainer:/data:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - 9000:9000
       - 9443:9443
-    volumes:
-      - /home/braden/portainer:/data
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
     network_mode: bridge

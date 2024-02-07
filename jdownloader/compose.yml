@@ -1,15 +1,15 @@
-version: '3'
+---
 services:
   jdownloader:
     image: jlesage/jdownloader-2
     container_name: jdownloader
-    restart: always
-    volumes:
-      - /home/braden/jdownloader:/config:rw
-      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/output:rw
-      - /etc/localtime:/etc/localtime:ro
     environment:
       - USER_ID=1000
       - GROUP_ID=100
       - UMASK=0002
+    volumes:
+      - ~/jdownloader:/config:rw
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media/downloads:/output:rw
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
     network_mode: container:gluetun

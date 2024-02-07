@@ -1,15 +1,16 @@
+---
 services:
   sonarr:
     image: linuxserver/sonarr:latest
     container_name: sonarr
-    restart: always
     environment:
       - PUID=1000
       - PGID=100
       - UMASK=002
       - TZ=Australia/Adelaide
     volumes:
-      - /home/braden/sonarr:/config
-      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media:/data
+      - ~/sonarr:/config:rw
+      - /srv/dev-disk-by-uuid-6e489cc6-dacc-48eb-a977-d75413376e50/media:/data:rw
       - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
     network_mode: container:gluetun

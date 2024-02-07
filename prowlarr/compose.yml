@@ -1,14 +1,15 @@
+---
 services:
   prowlarr:
     image: linuxserver/prowlarr:latest
     container_name: prowlarr
-    restart: always
     environment:
       - PUID=1000
       - PGID=100
       - UMASK=002
       - TZ=Australia/Adelaide
     volumes:
-      - /home/braden/prowlarr:/config
+      - ~/prowlarr:/config:rw
       - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
     network_mode: container:gluetun
